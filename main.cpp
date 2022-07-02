@@ -74,27 +74,25 @@ cad=new char[1000];
 cout<<"ingrese la cadena de letras y numeros: ";
 cin>>cad;
 
-int len=sizeof(cad),j=0,k=0,i=0;
+int len=sizeof(cad),j=0,k=0;
 char *num;
 char *let;
 
 num=new char[len];
 let=new char[len];
 
-for(i;i<len;i++){
+for(int i=0;i<len;i++){
     if((cad[i]>=65)&&(cad[i]<=122)){
     let[j]=cad[i];
-    j++;
-    }
-        else{
-        num[k]=cad[i];
-        k++;
-        }
+    j++;}
+    else{
+    num[k]=cad[i];
+    k++;}
 }
 cout << "Original: " << cad << endl;
 cout << "Texto: ";
 
-for (i; i < k; i++){
+for (int i=0; i < k; i++){
 cout << let[i];}
 
 cout << ' ';
