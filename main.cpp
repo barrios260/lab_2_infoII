@@ -7,7 +7,7 @@ int retornoint(char* str);
 //funcion 2
 double **matriz_nueva(int f,int c);
 
-void imprimir_matriz(double **matriz,int f, int c);
+//void imprimir_matriz(double **matriz,int f, int c);
 
 int main()
 {   int opcion;
@@ -123,27 +123,45 @@ case 5:{
     }
 break;
 case 6:{
-int cuadrada,c,f;//variables
+int num;//variables
 cout<<"ingrese un numero para la matriz cuadrada: ";//se pide un unico numero para la matriz cuadrada
-cin>>cuadrada;
-f=cuadrada;//filas = columnas ya que es matriz cuadrada
-c=cuadrada;
+cin>>num;
 double **ptr;//se define un puntero doble
-ptr=matriz_nueva(f,c);//apunta hacia la matriz
+ptr=matriz_nueva(num,num);//apunta hacia la matriz
 
-for(int i=0;i<f;i++){//se ingresa los datos
-    for(int j=0;j<c;j++){
+for(int i=0;i<num;i++){//se ingresa los datos
+    for(int j=0;j<num;j++){
         cin>>ptr[i][j];}
 }
 
-for(int i=0;i<f;i++){// se imprime los datos
-    for(int j=0;j<c;j++)
+for(int i=0;i<num;i++){// se imprime los datos
+    for(int j=0;j<num;j++)
         cout<<ptr[i][j]<<" ";
     cout<<endl;
 }
 
 
     }//case  6
+
+break;
+case 7:{
+int num=5;
+double **ptr;//se define un puntero doble
+ptr=matriz_nueva(num,num);//apunta hacia la matriz
+    int ns = 1;
+    for(int i=0;i<num;i++){//se ingresa los datos
+        for(int j=0;j<num;j++){
+            ptr[i][j] = ns;
+            ns++;
+        }
+    }
+    for(int i=0;i<num;i++){// se imprime los datos
+        for(int j=0;j<num;j++)
+            cout<<ptr[i][j]<<" ";
+        cout<<endl;
+    }
+
+    }
     }//switch
     return 0;
 }
@@ -162,7 +180,11 @@ for(int i=0;i<f;i++)
 
 return ptr;
 }
-//imprimir matriz
+//funcion 3
+void relleno_matriz(int n){
+
+}
+/*//imprimir matriz
 void imprimir_matriz(double **matriz,int f, int c){
     for(int i=0;i<f;i++){
         for(int j=0;j<f;j++)
@@ -170,4 +192,4 @@ void imprimir_matriz(double **matriz,int f, int c){
         cout<<endl;
     }
 }
-
+*/
