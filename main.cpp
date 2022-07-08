@@ -2,7 +2,12 @@
 #include <time.h>
 #include <stdio.h>
 using namespace std;
+//funcion 1
 int retornoint(char* str);
+//funcion 2
+double **matriz_nueva(int f,int c);
+
+void imprimir_matriz(double **matriz,int f, int c);
 
 int main()
 {   int opcion;
@@ -105,13 +110,64 @@ cout << num[i];
 cout << endl;
 
     }//case
+break;
+case 5:{
+    char conversion;
+    cout<<"ingrese los numeros romanos: ";
+    char romanos[][7]={"M","D","C","L","X","V","I"}; //const me permite apuntar a varios objetos
+    cin>>conversion;                                                       //sin modificarlos
+    char *ptr_romanos;
 
+    cout<<ptr_romanos;
+
+    }
+break;
+case 6:{
+int cuadrada,c,f;//variables
+cout<<"ingrese un numero para la matriz cuadrada: ";//se pide un unico numero para la matriz cuadrada
+cin>>cuadrada;
+f=cuadrada;//filas = columnas ya que es matriz cuadrada
+c=cuadrada;
+double **ptr;//se define un puntero doble
+ptr=matriz_nueva(f,c);//apunta hacia la matriz
+
+for(int i=0;i<f;i++){//se ingresa los datos
+    for(int j=0;j<c;j++){
+        cin>>ptr[i][j];}
+}
+
+for(int i=0;i<f;i++){// se imprime los datos
+    for(int j=0;j<c;j++)
+        cout<<ptr[i][j]<<" ";
+    cout<<endl;
+}
+
+
+    }//case  6
     }//switch
     return 0;
 }
+//funcion 1
 int retornoint(char *cadena ){
     int res=0;
         for (int i = 0; cadena[i] != '\0'; ++i)
                 res = res * 10 + cadena[i] - '0';
         return res;
 }
+//funcion 2
+double **matriz_nueva(int f,int c){//f=fila,c=columna
+    double **ptr=new double*[f];
+for(int i=0;i<f;i++)
+    ptr[i]=new double[c];
+
+return ptr;
+}
+//imprimir matriz
+void imprimir_matriz(double **matriz,int f, int c){
+    for(int i=0;i<f;i++){
+        for(int j=0;j<f;j++)
+            cout<<matriz[i][j]<< " ";
+        cout<<endl;
+    }
+}
+
