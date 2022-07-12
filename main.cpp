@@ -170,7 +170,7 @@ for(int i=0;i<num;i++){// se imprime los datos
 
 break;
 case 7:{
-int num=5;
+int num=5,temporal[5][5],ex;
 double **ptr;//se define un puntero doble
 ptr=matriz_nueva(num,num);//apunta hacia la matriz
     int ns = 1;
@@ -197,9 +197,10 @@ ptr=matriz_nueva(num,num);//apunta hacia la matriz
 
     cout<<"MATRIZ 90 GRADOS "<<endl;
     for(int i=0;i<5;i++){
-        for(int j=0;j<5;j++)
-            cout<<ptr[j][i]<<" ";
-        cout<<endl;
+        ex=0;
+        for(int j=5-1;j>=0;j--){
+            temporal[i][ex]=matriz_nueva(num,num);
+        }
     }
 //matriz 270 grados
     for(int i=num+1;i<num;i++){
