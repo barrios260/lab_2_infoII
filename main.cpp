@@ -116,9 +116,6 @@ case 5:{
 
     int valor[100];
     int n=3,i,numero=0;
-    //cout<<"ingrese el numero romano: ";
-    //cin>>romanos;
-    //n=strlen(romanos);
 
     for(i=0;i<n;i++){
         if(romanos[i]=='I' or romanos[i]=='i')
@@ -183,12 +180,34 @@ ptr=matriz_nueva(num,num);//apunta hacia la matriz
             ns++;
         }
     }
-    for(int i=0;i<num;i++){// se imprime la matriz normal
+    cout<<"MATRIZ ORIGINAL "<<endl;
+    for(int i=0;i<num;i++){
         for(int j=0;j<num;j++)
             cout<<ptr[i][j]<<" ";
         cout<<endl;
     }
+    cout<<endl;
+    cout<<"MATRIZ 180 GRADOS "<<endl;
+    for(int i=num-1;i>=0;i--){
+        for(int j=num-1;j>=0;j--)
+            cout<<ptr[i][j]<<" ";
+        cout<<endl;
+    }
+    cout<<endl;
 
+    cout<<"MATRIZ 90 GRADOS "<<endl;
+    for(int i=0;i<5;i++){
+        for(int j=0;j<5;j++)
+            cout<<ptr[j][i]<<" ";
+        cout<<endl;
+    }
+//matriz 270 grados
+    for(int i=num+1;i<num;i++){
+        for(int j=num+1;j<num;j++)
+            cout<<ptr[j][i]<<" ";
+        cout<<endl;
+    }
+    cout<<endl;
 
     }
     }//switch
