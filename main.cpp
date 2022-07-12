@@ -56,7 +56,7 @@ break;
 case 2:{
     char cadena[] = "89789";
     int val = retornoint(cadena);
-        cout << val;
+        cout << val<<endl;
 }
 break;
 case 3:{
@@ -112,14 +112,42 @@ cout << endl;
     }//case
 break;
 case 5:{
-    char conversion;
-    cout<<"ingrese los numeros romanos: ";
-    char romanos[][7]={"M","D","C","L","X","V","I"}; //const me permite apuntar a varios objetos
-    cin>>conversion;                                                       //sin modificarlos
-    char *ptr_romanos;
+    char romanos[3]={'x','i','x'};
 
-    cout<<ptr_romanos;
+    int valor[100];
+    int n=3,i,numero=0;
+    //cout<<"ingrese el numero romano: ";
+    //cin>>romanos;
+    //n=strlen(romanos);
 
+    for(i=0;i<n;i++){
+        if(romanos[i]=='I' or romanos[i]=='i')
+            valor[i]=1;
+        if(romanos[i]=='V' or romanos[i]=='v')
+            valor[i]=5;
+        if(romanos[i]=='X' or romanos[i]=='x')
+            valor[i]=10;
+        if(romanos[i]=='L' or romanos[i]=='l')
+            valor[i]=50;
+        if(romanos[i]=='C' or romanos[i]=='c')
+            valor[i]=100;
+        if(romanos[i]=='D' or romanos[i]=='d')
+            valor[i]=500;
+        if(romanos[i]=='M' or romanos[i]=='m')
+            valor[i]=1000;
+    }
+    for(i=0;i<n;i++){
+        if(i==n-1){
+            numero+=valor[i];
+        }
+
+        else
+            if(valor[i]>=valor[i+1])
+                numero+=valor[i];
+            else
+                numero-=valor[i];
+        }
+    cout<<"el numero romano es: "<<numero<<endl;
     }
 break;
 case 6:{
@@ -155,11 +183,12 @@ ptr=matriz_nueva(num,num);//apunta hacia la matriz
             ns++;
         }
     }
-    for(int i=0;i<num;i++){// se imprime los datos
+    for(int i=0;i<num;i++){// se imprime la matriz normal
         for(int j=0;j<num;j++)
             cout<<ptr[i][j]<<" ";
         cout<<endl;
     }
+
 
     }
     }//switch
