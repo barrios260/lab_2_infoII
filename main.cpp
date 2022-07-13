@@ -112,10 +112,10 @@ cout << endl;
     }//case
 break;
 case 5:{
-    char romanos[3]={'x','i','x'};
+    char romanos[4]={'x','x','x','x'};
 
     int valor[100];
-    int n=3,i,numero=0;
+    int n=4,i,numero=0;
 
     for(i=0;i<n;i++){
         if(romanos[i]=='I' or romanos[i]=='i')
@@ -148,7 +148,7 @@ case 5:{
     }
 break;
 case 6:{
-int num;//variables
+int num,aux;//variables
 cout<<"ingrese un numero para la matriz cuadrada: ";//se pide un unico numero para la matriz cuadrada
 cin>>num;
 double **ptr;//se define un puntero doble
@@ -170,7 +170,7 @@ for(int i=0;i<num;i++){// se imprime los datos
 
 break;
 case 7:{
-int num=5,temporal[5][5],ex;
+/*int num=5,temporal[5][5],ex;
 double **ptr;//se define un puntero doble
 ptr=matriz_nueva(num,num);//apunta hacia la matriz
     int ns = 1;
@@ -199,7 +199,7 @@ ptr=matriz_nueva(num,num);//apunta hacia la matriz
     for(int i=0;i<5;i++){
         ex=0;
         for(int j=5-1;j>=0;j--){
-            temporal[i][ex]=matriz_nueva(num,num);
+            //temporal[i][ex]=matriz_nueva(num,num);
         }
     }
 //matriz 270 grados
@@ -209,7 +209,23 @@ ptr=matriz_nueva(num,num);//apunta hacia la matriz
         cout<<endl;
     }
     cout<<endl;
+*/
 
+
+int num [5][5],i,j,ns=1;
+    for(i=0;i<5;i++){
+        for(j=0;j<5;j++){
+            num[i][j]=ns;
+            ns++;
+        }
+    }
+    cout<<"matriz original "<<endl;
+    for(i=0;i<5;i++){
+        for(j=0;j<5;j++){
+            cout<<num[i][j]<<" ";
+        }
+        cout<<endl;
+    }
     }
     }//switch
     return 0;
