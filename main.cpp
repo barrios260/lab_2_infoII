@@ -170,49 +170,8 @@ for(int i=0;i<num;i++){// se imprime los datos
 
 break;
 case 7:{
-/*int num=5,temporal[5][5],ex;
-double **ptr;//se define un puntero doble
-ptr=matriz_nueva(num,num);//apunta hacia la matriz
-    int ns = 1;
-    for(int i=0;i<num;i++){//se ingresa los datos
-        for(int j=0;j<num;j++){
-            ptr[i][j] = ns;
-            ns++;
-        }
-    }
-    cout<<"MATRIZ ORIGINAL "<<endl;
-    for(int i=0;i<num;i++){
-        for(int j=0;j<num;j++)
-            cout<<ptr[i][j]<<" ";
-        cout<<endl;
-    }
-    cout<<endl;
-    cout<<"MATRIZ 180 GRADOS "<<endl;
-    for(int i=num-1;i>=0;i--){
-        for(int j=num-1;j>=0;j--)
-            cout<<ptr[i][j]<<" ";
-        cout<<endl;
-    }
-    cout<<endl;
 
-    cout<<"MATRIZ 90 GRADOS "<<endl;
-    for(int i=0;i<5;i++){
-        ex=0;
-        for(int j=5-1;j>=0;j--){
-            //temporal[i][ex]=matriz_nueva(num,num);
-        }
-    }
-//matriz 270 grados
-    for(int i=num+1;i<num;i++){
-        for(int j=num+1;j<num;j++)
-            cout<<ptr[j][i]<<" ";
-        cout<<endl;
-    }
-    cout<<endl;
-*/
-
-
-int num [5][5],i,j,ns=1;
+int num [5][5],i,j,ns=1,aux,matriz2,matriz3;
     for(i=0;i<5;i++){
         for(j=0;j<5;j++){
             num[i][j]=ns;
@@ -226,9 +185,49 @@ int num [5][5],i,j,ns=1;
         }
         cout<<endl;
     }
+
+    cout<<"MATRIZ 90 GRADOS "<<endl;
+    for(i=0;i<5/2;i++){
+        for(j=i;j<5-i-1;j++){
+            matriz2=num[i][j];
+            num[i][j]=num[5-1-j][i];
+            num[5-1-j][i]=num[5-1-i][5-i-j];
+            num[5-1-i][5-1-j]=num[j][5-1-i];
+            num[j][5-1-i]=matriz2;
+        }
     }
-    }//switch
+    for(i=0;i<5;i++){
+        for(j=0;j<5;j++){
+            cout<<num[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+
+
+    cout<<"MATRIZ 180 GRADOS "<<endl;
+    for(i=4;i>=0;i--){
+        for(j=4;j>=0;j--){
+            cout<<*num;
+        }
+    }
+
+       cout<<endl;
+    cout<<"MATRIZ 270 GRADOS "<<endl;
+
+
+}
+break;
+case 8:{
+    int num,formula;
+    cout<<"Ingrese un numero para construir una malla nxn: ";
+    cin>>num;
+    formula=(num*num-1)*2;
+    cout<<"Para una malla de "<<num<<"x"<<num<<" puntos hay "<<formula<<" caminos."<<endl;
+
+    }
     return 0;
+}//switch
 }
 //funcion 1
 int retornoint(char *cadena ){
