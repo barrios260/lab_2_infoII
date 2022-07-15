@@ -1,11 +1,14 @@
 #include <iostream>
 #include <time.h>
 #include <stdio.h>
+#include <math.h>
 using namespace std;
 //funcion 1
 int retornoint(char* str);
 //funcion 2
 double **matriz_nueva(int f,int c);
+//funcion para imprimir
+void cout_matriz(int* lista);
 
 //void imprimir_matriz(double **matriz,int f, int c);
 
@@ -171,49 +174,47 @@ for(int i=0;i<num;i++){// se imprime los datos
 break;
 case 7:{
 
-int num [5][5],i,j,ns=1,aux,matriz2,matriz3;
-    for(i=0;i<5;i++){
-        for(j=0;j<5;j++){
-            num[i][j]=ns;
-            ns++;
+        int Matriz[25],Matriz90[25],Matriz180[25],Matriz270[25],posicion = 0,summat=1;
+        for(int i = 0; i<25 ; i++){
+            Matriz[i] = summat++;
         }
-    }
-    cout<<"matriz original "<<endl;
-    for(i=0;i<5;i++){
-        for(j=0;j<5;j++){
-            cout<<num[i][j]<<" ";
-        }
-        cout<<endl;
-    }
 
-    cout<<"MATRIZ 90 GRADOS "<<endl;
-    for(i=0;i<5/2;i++){
-        for(j=i;j<5-i-1;j++){
-            matriz2=num[i][j];
-            num[i][j]=num[5-1-j][i];
-            num[5-1-j][i]=num[5-1-i][5-i-j];
-            num[5-1-i][5-1-j]=num[j][5-1-i];
-            num[j][5-1-i]=matriz2;
+        posicion = 0;
+        for(int i = 5; i>0 ; i--){
+            for(int j = 0; j<=24 ; j += 5){
+            Matriz90[(i+j-1)] = Matriz[posicion];
+            posicion++;
+            }
         }
-    }
-    for(i=0;i<5;i++){
-        for(j=0;j<5;j++){
-            cout<<num[i][j]<<" ";
+
+        posicion = 24;
+        for(int i = 0; i<25 ; i++){
+            Matriz180[posicion] = Matriz[i];
+            posicion--;
+        }
+
+        posicion = 24;
+        for(int y = 5; y>0 ; y--){
+            for(int g = 0; g<=24 ; g += 5){
+            Matriz270[(y+g-1)] = Matriz[posicion];
+            posicion--;
+            }
         }
         cout<<endl;
-    }
+        cout << "Matriz Original" << endl;
+        cout_matriz(Matriz);
+        cout<<endl;
+        cout << "Matriz Rotada 90 grados" << endl;
+        cout_matriz(Matriz90);
+        cout<<endl;
+        cout << "Matriz Rotada 180 grados" << endl;
+        cout_matriz(Matriz180);
+        cout<<endl;
+        cout << "Matriz Rotada 270 grados" << endl;
+        cout_matriz(Matriz270);
+        cout<<endl;
 
 
-
-    cout<<"MATRIZ 180 GRADOS "<<endl;
-    for(i=4;i>=0;i--){
-        for(j=4;j>=0;j--){
-            cout<<*num;
-        }
-    }
-
-       cout<<endl;
-    cout<<"MATRIZ 270 GRADOS "<<endl;
 
 
 }
@@ -224,6 +225,13 @@ case 8:{
     cin>>num;
     formula=(num*num-1)*2;
     cout<<"Para una malla de "<<num<<"x"<<num<<" puntos hay "<<formula<<" caminos."<<endl;
+
+    }
+break;
+case 9:{
+    int enesimo,cadena[10]={0,1,2,3,4,5,6,7,8,9};
+    cout<<"Ingrese el numero de permutaciones que quiere obtener: ";
+    cin>>enesimo;
 
     }
     return 0;
@@ -244,16 +252,22 @@ for(int i=0;i<f;i++)
 
 return ptr;
 }
-//funcion 3
-void relleno_matriz(int n){
+//funcion para imprimir matriz
+void cout_matriz(int* lista){
 
-}
-/*//imprimir matriz
-void imprimir_matriz(double **matriz,int f, int c){
-    for(int i=0;i<f;i++){
-        for(int j=0;j<f;j++)
-            cout<<matriz[i][j]<< " ";
-        cout<<endl;
+    int contador = 0;
+
+    for(int i = 0; i<5; i++){
+        for(int j = 0; j<5 ; j++){
+            if(*(lista+contador)<10){
+                cout<<*(lista+contador)<<" ";
+            }
+            else{
+                cout<<*(lista+contador)<<" ";
+            }
+            contador++;
+      }
+
+        cout << endl;
     }
 }
-*/
