@@ -1,16 +1,16 @@
 #include <iostream>
 #include <time.h>
 #include <stdio.h>
-#include <math.h>
+
 using namespace std;
 //funcion 1
 int retornoint(char* str);
-//funcion 2
-double **matriz_nueva(int f,int c);
+//matriz pidiendo datos
+void rellen_mat();
 //funcion para imprimir
-void cout_matriz(int* lista);
+void cout_matriz(int* iter);
 
-//void imprimir_matriz(double **matriz,int f, int c);
+
 
 int main()
 {   int opcion;
@@ -63,123 +63,90 @@ case 2:{
 }
 break;
 case 3:{
-        string cad;
-        cout<<"ingrese una cadena de caracteres: ";
-        cin >> cad;
-
+        char cad[]={"ManZ-aNA"};//cadena a modificar
         char i = 0;
-        while (cad[i] != '\0'){
+        while (cad[i] != '\0'){//hasta que se termine la cadena
             if ((cad[i] >= 97 ) && (cad[i]<= 122 )){//si esta en las letras minusculas
                 cad[i] = cad[i] - 32;}//cambia la letra minuscula por mayuscula en la tabla ascci
-                i++;}
+                i++;}//aumento la letra en posicion
                 cout << cad << endl;
 }
 break;
 case 4:{
-char *cad;
+        char cad[] = "abv67h76";//cadena a cambiar
+        char numeros[sizeof(cad)];//"reservar memoria"
+        char letras[sizeof(cad)];
+        short int num_aum = 0;//contador numeros
+        short int let_aum = 0;//contador letras
 
-cad=new char[1000];
-cout<<"ingrese la cadena de letras y numeros: ";
-cin>>cad;
+        for( int i = 0; i<sizeof(cad) ; i++){//recorre la cadena
+            if(cad[i]>47 && cad[i]<58){//si esta entre los numeros 0 al 9
+             numeros[num_aum] = cad[i]; //guardo en numeros
+             num_aum++;
+            }
+            else{//si no
+            letras[let_aum] = cad[i];//guardo en letras
+            let_aum++;
+            }
+        }
 
-int len=sizeof(cad),j=0,k=0;
-char *num;
-char *let;
-
-num=new char[len];
-let=new char[len];
-
-for(int i=0;i<len;i++){
-    if((cad[i]>=65)&&(cad[i]<=122)){
-    let[j]=cad[i];
-    j++;}
-    else{
-    num[k]=cad[i];
-    k++;}
-}
-cout << "Original: " << cad << endl;
-cout << "Texto: ";
-
-for (int i=0; i < k; i++){
-cout << let[i];}
-
-cout << ' ';
-cout << "Numero: ";
-
-for (int i = 0; i < j; i++)
-{
-cout << num[i];
-}
-cout << endl;
+        cout << "Original: " <<cad<< endl;
+        cout << "Texto: " <<letras<<" Numero: " << numeros<<endl;
+        //imprimo datos
+        return 0;
 
     }//case
 break;
 case 5:{
-    char romanos[4]={'x','x','x','x'};
+        char romanos[]={"ix"};//numero a convertir
 
-    int valor[100];
-    int n=4,i,numero=0;
+           int valor[100];//"reserva de memoria
+           int n=2,i,numero=0;
 
-    for(i=0;i<n;i++){
-        if(romanos[i]=='I' or romanos[i]=='i')
-            valor[i]=1;
-        if(romanos[i]=='V' or romanos[i]=='v')
-            valor[i]=5;
-        if(romanos[i]=='X' or romanos[i]=='x')
-            valor[i]=10;
-        if(romanos[i]=='L' or romanos[i]=='l')
-            valor[i]=50;
-        if(romanos[i]=='C' or romanos[i]=='c')
-            valor[i]=100;
-        if(romanos[i]=='D' or romanos[i]=='d')
-            valor[i]=500;
-        if(romanos[i]=='M' or romanos[i]=='m')
-            valor[i]=1000;
-    }
-    for(i=0;i<n;i++){
-        if(i==n-1){
-            numero+=valor[i];
-        }
+           for(i=0;i<n;i++){//itera y busca el numero para el valor en decimal
+               if(romanos[i]=='I' or romanos[i]=='i')
+                   valor[i]=1;
+               if(romanos[i]=='V' or romanos[i]=='v')
+                   valor[i]=5;
+               if(romanos[i]=='X' or romanos[i]=='x')
+                   valor[i]=10;
+               if(romanos[i]=='L' or romanos[i]=='l')
+                   valor[i]=50;
+               if(romanos[i]=='C' or romanos[i]=='c')
+                   valor[i]=100;
+               if(romanos[i]=='D' or romanos[i]=='d')
+                   valor[i]=500;
+               if(romanos[i]=='M' or romanos[i]=='m')
+                   valor[i]=1000;
+           }
+           for(i=0;i<n;i++){
+               if(i==n-1){//si esta en posicion anterior sumo
+                   numero+=valor[i];
+               }
 
-        else
-            if(valor[i]>=valor[i+1])
-                numero+=valor[i];
-            else
-                numero-=valor[i];
-        }
-    cout<<"el numero romano es: "<<numero<<endl;
-    }
+               else
+                   if(valor[i]>=valor[i+1])//si el valor es mayor aumento
+                       numero+=valor[i];
+                   else
+                       numero-=valor[i];//si no disminuyo valor
+               }
+           cout<<"el numero romano es: "<<numero<<endl;
+           }
 break;
 case 6:{
-int num,aux;//variables
-cout<<"ingrese un numero para la matriz cuadrada: ";//se pide un unico numero para la matriz cuadrada
-cin>>num;
-double **ptr;//se define un puntero doble
-ptr=matriz_nueva(num,num);//apunta hacia la matriz
+    rellen_mat();
 
-for(int i=0;i<num;i++){//se ingresa los datos
-    for(int j=0;j<num;j++){
-        cin>>ptr[i][j];}
-}
-
-for(int i=0;i<num;i++){// se imprime los datos
-    for(int j=0;j<num;j++)
-        cout<<ptr[i][j]<<" ";
-    cout<<endl;
-}
-
-
-    }//case  6
+    }
 
 break;
 case 7:{
 
-        int Matriz[25],Matriz90[25],Matriz180[25],Matriz270[25],posicion = 0,summat=1;
-        for(int i = 0; i<25 ; i++){
+        int Matriz[25],Matriz90[25],Matriz180[25],Matriz270[25],posicion = 0,summat=1;//datos
+        for(int i = 0; i<25 ; i++){//relleno matriz del 1 al 25
             Matriz[i] = summat++;
         }
 
-        posicion = 0;
+        posicion = 0;//formula para rotar matriz
         for(int i = 5; i>0 ; i--){
             for(int j = 0; j<=24 ; j += 5){
             Matriz90[(i+j-1)] = Matriz[posicion];
@@ -187,13 +154,13 @@ case 7:{
             }
         }
 
-        posicion = 24;
+        posicion = 24;//formula para rotar matriz
         for(int i = 0; i<25 ; i++){
             Matriz180[posicion] = Matriz[i];
             posicion--;
         }
 
-        posicion = 24;
+        posicion = 24;//formula para rotar matriz
         for(int y = 5; y>0 ; y--){
             for(int g = 0; g<=24 ; g += 5){
             Matriz270[(y+g-1)] = Matriz[posicion];
@@ -214,16 +181,14 @@ case 7:{
         cout_matriz(Matriz270);
         cout<<endl;
 
-
-
-
+//impresion de datos
 }
 break;
 case 8:{
-    int num,formula;
+    int num,formula;//asignacion de datos
     cout<<"Ingrese un numero para construir una malla nxn: ";
     cin>>num;
-    formula=(num*num-1)*2;
+    formula=(num*num-1)*2;//formula que funciona
     cout<<"Para una malla de "<<num<<"x"<<num<<" puntos hay "<<formula<<" caminos."<<endl;
 
     }
@@ -238,33 +203,40 @@ case 9:{
 }//switch
 }
 //funcion 1
-int retornoint(char *cadena ){
-    int res=0;
-        for (int i = 0; cadena[i] != '\0'; ++i)
-                res = res * 10 + cadena[i] - '0';
-        return res;
+int retornoint(char *cadena ){//funcion que retorna un int
+    int res=0;//defino "resultado"
+        for (int i = 0; cadena[i] != '\0'; ++i)//recorro la cadena desde la posicion inicial \0 significa que es char
+                res = res *10 + cadena[i] - '0';//si encuentra el caracter especial lo elimina y sigue buscando los demas
+        return res;//se multplica por 10 para realizar conversion y retorna la cadena nueva en int
 }
 //funcion 2
-double **matriz_nueva(int f,int c){//f=fila,c=columna
-    double **ptr=new double*[f];
-for(int i=0;i<f;i++)
-    ptr[i]=new double[c];
+void rellen_mat(){
+int **ptr_matriz,n,aux;//puntero a una matriz
+    cout<<"ingrese el numero para generar una matriz cuadrada: ";
+    cin>>n;
 
-return ptr;
+    ptr_matriz=new int*[n];//reservar memoria para filas
+    for(int i=0;i<n;i++){
+        ptr_matriz[i]=new int[n];//reservar memoria para columnas
+    }
+    cout<<"ingrese los elementos de la matriz: ";
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+
+            cin>>ptr_matriz[i][j];//recorre la matriz y la rellena
+        }
+    }
 }
 //funcion para imprimir matriz
-void cout_matriz(int* lista){
+void cout_matriz(int *iter){
 
     int contador = 0;
 
     for(int i = 0; i<5; i++){
-        for(int j = 0; j<5 ; j++){
-            if(*(lista+contador)<10){
-                cout<<*(lista+contador)<<" ";
-            }
-            else{
-                cout<<*(lista+contador)<<" ";
-            }
+        for(int j = 0; j<5 ; j++){//itera para pasar por cada numero de la matriz
+
+            cout<<*(iter+contador)<<" ";//imprime la matriz forma = que [i][j]
+
             contador++;
       }
 
